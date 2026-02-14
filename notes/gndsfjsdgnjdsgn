@@ -1,0 +1,4 @@
+Need a complete text overhaul. Deleted a bunch of text fonts and colors
+thoughtout the code. Can't use the pictures for the text. A image element 
+does not print the image when drawn, it moves it. One image element can be
+drawn in multiple places simutanously. 

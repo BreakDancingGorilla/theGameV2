@@ -1,0 +1,334 @@
+///Enemy object
+/* var obama = {
+    x: 250,
+    y: 400,
+    width: 50,
+    height: 50,
+    speed: 15,
+    color: "red",
+    targetIndex: 0, 
+
+  //Need a edge case for when distance of cord is equal or less than speed
+
+    moveTowardsCoin: function(){
+      //By using the switch cases he can move both y and x at same time!!!!!!! mindBlown.jpeg
+      switch (true) {
+        case this.x < coins.array[this.targetIndex]['x']:
+          this.x += 20;
+          break;
+        case this.x > coins.array[this.targetIndex]['x']:
+          this.x -= 20;
+          break;
+        //the speed edge case
+        case this.speed < coins.array[this.targetIndex]['x'] - this.x:
+          this.speed = 1;
+          break;
+        default:
+          break;
+      }
+
+      switch (true) {
+        case this.y < coins.array[this.targetIndex]['y']:
+           this.y += 20;
+          break;
+         case this.y > coins.array[this.targetIndex]['y']:
+           this.x -= 20;
+        //the speed edge case
+        case this.speed < coins.array[this.targetIndex]['y'] - this.y:
+          this.speed = 1;
+        default:
+          break;
+      }
+
+      if(this.y < coins.array[this.targetIndex]['y']){
+        this.y += 20;
+        return;
+      }
+      if(this.y > coins.array[this.targetIndex]['y']){
+        this.y -= 20;
+        return;
+      }
+
+
+    },
+
+    targetNewRanCoin: function(){
+      this.targetIndex = ranNum(0, coins.arrayLength - 1);
+      this.speed = 15;
+    },
+
+}
+
+
+function insertText(originalString, textToInsert, index) {
+     if (index < 0 || index > originalString.length) {
+         return originalString; // Handle invalid index
+     }
+     return originalString.slice(0, index) + textToInsert + originalString.slice(index);
+   }
+
+
+updateObjLoc(isImage, isGif) {
+    if (!isImage && !isGif) {
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    ctx.fillRect(this.lastPosX, this.lastPosY, this.width, this.height);
+  }
+  if(isImage){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    image.src = this.imgSrc;
+    ctx.drawImage(image.src, this.x, this.y);
+  }
+  if(this.currentFrame > this.frames - 1 ){
+    this.currentFrame = 0;
+  }
+  if(isGif){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    this.currentFrame++;
+    this.imgSrc = "imgs/obamaFrames/obama-" + this.currentFrame.toString() + ".png";
+    this.img.src = this.imgSrc;
+    console.log(this.imgSrc);
+    ctx.drawImage(this.img, this.x, this.y);
+  }
+}
+
+
+
+
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+
+var myimage = new Image(50,50);
+myimage.src = "obama-109.png";
+myimage.onload = function() {
+  ctx.drawImage(myimage, 0, 0, 50 , 50); // Draw at (50, 50) with width and height of 50
+};
+
+
+
+
+
+      //ctx.fillStyle = this.array[i]['color'];
+      /* ctx.fillRect(
+        this.array[i]['x'],
+        this.array[i]['y'],
+        this.array[i]['width'],
+        this.array[i]['height'],
+        updateObjLoc(isImage, isGif) {
+    if (!isImage && !isGif) {
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    ctx.fillRect(this.lastPosX, this.lastPosY, this.width, this.height);
+  }
+  if(isImage){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    image.src = this.imgSrc;
+    ctx.drawImage(image.src, this.x, this.y);
+  }
+  if(this.currentFrame > this.frames - 1 ){
+    this.currentFrame = 0;
+  }
+  if(isGif){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    this.currentFrame++;
+    this.imgSrc = "imgs/obamaFrames/obama-" + this.currentFrame.toString() + ".png";
+    this.img.src = this.imgSrc;
+    console.log(this.imgSrc);
+    ctx.drawImage(this.img, this.x, this.y);
+  }
+}
+      ); */
+ /*      ctx.drawImage(coinImg, this.array[i]['x'], this.array[i]['y'])
+      this.patchCount ++;
+    
+   */
+  
+/*   addCoins (amt) {
+    let temp = 0;
+    
+    for (let i = this.arrayLength; i < this.arrayLength + amt; i++) {
+      /// add new coins with index and this if if if else format.
+      
+        this.array[i] = {
+          index: 1,
+          color: "gold",
+          x: ranNum(0, canvas.width),
+          y: ranNum(0, canvas.height),
+          width: 35,
+          height: 35,
+        };
+      
+      temp++;
+    }
+    this.arrayLength += temp;
+
+  }
+
+
+
+
+  patch (num) {
+    if (this.arrayLength < num) {
+        this.addCoins(1);
+        this.arrayLength++;
+    }
+    if (this.arrayLength > num) {
+      this.removeCoin([0]);
+      this.arrayLength--;
+      
+    }
+  }
+
+  
+
+
+
+   */
+
+
+       this.array[i] = {
+        type: this.typeBP,
+        render: this.renderBP,
+        frames: this.framesBP,
+        imgSrc: this.imgSrcBP,
+        color: this.colorBP,
+        x: this.xBP,
+        y: this.yBP,
+        lastPosX: this.xBP,
+        lastPosY: this.yBP,
+        width: this.widthBP,
+        height: this.heightBP,
+        hasGravity: this.hasGravityBP,
+        gravityAffected: this.gravityAffectedBP,
+        dragable: this.dragableBP,
+      }; 
+      
+    this.arra
+
+
+
+
+
+
+    var coins = {
+  arrayLength: 0,
+  array: {},
+  patchCount: 0,
+
+
+  createCoins: function (amt) {
+    let temp = 0;
+
+    for (let i = this.arrayLength; i <   (this.arrayLength) + amt; i++) {
+      this.array[i] = {
+        index: 1,
+        color: "gold",
+        x: ranNum(0, canvas.width),
+        y: ranNum(0, canvas.height),
+        width: 35,
+        height: 35,
+      };   
+      temp ++;
+      
+    }
+    this.arrayLength += temp;
+
+  },
+
+  renderCoins: function () {
+    this.patchCount = 0;
+    for (let i = 0; i < this.arrayLength; i++) {
+      //ctx.fillStyle = this.array[i]['color'];
+      /* ctx.fillRect(
+        this.array[i]['x'],
+        this.array[i]['y'],
+        this.array[i]['width'],
+        this.array[i]['height'],
+        
+      ); */
+      ctx.drawImage(coinImg, this.array[i]['x'], this.array[i]['y'])
+      this.patchCount ++;
+    }
+  
+  },
+
+  addCoins: function (amt) {
+    let temp = 0;
+    
+    for (let i = this.arrayLength; i < this.arrayLength + amt; i++) {
+      /// add new coins with index and this if if if else format.
+      
+        this.array[i] = {
+          index: 1,
+          color: "gold",
+          x: ranNum(0, canvas.width),
+          y: ranNum(0, canvas.height),
+          width: 35,
+          height: 35,
+        };
+      
+      temp++;
+    }
+    this.arrayLength += temp;
+
+  },
+
+
+  //copys data of last object in array to index then deletes last object.
+  removeCoin: function (index, decay){
+    if(index[0]){
+      //render the coin one last time to change its color.
+      if(decay){
+      this.array[index[1]]['color'] = 'darkgoldenrod';
+            ctx.fillStyle = this.array[index[1]]['color'];
+      ctx.fillRect(
+        this.array[index[1]]['x'],
+        this.array[index[1]]['y'],
+        this.array[index[1]]['width'],
+        this.array[index[1]]['height'],
+      )
+    }
+    else{clearobj(this.array[index[1]])}
+
+      this.array[index[1]]['color'] = this.array[this.arrayLength - 1]['color'];
+      this.array[index[1]]['x'] = this.array[this.arrayLength - 1]['x'];
+      this.array[index[1]]['y'] = this.array[this.arrayLength - 1]['y'];
+      this.array[index[1]]['width'] = this.array[this.arrayLength - 1]['width'];
+      this.array[index[1]]['height'] = this.array[this.arrayLength - 1]['height'];
+      delete this.array[this.arrayLength - 1];
+      this.arrayLength --;
+      return true;
+  }
+    else {return}
+  }, 
+
+
+  patch: function (num) {
+    if (this.arrayLength < num) {
+        this.addCoins(1);
+        this.arrayLength++;
+    }
+    if (this.arrayLength > num) {
+      this.removeCoin([0]);
+      this.arrayLength--;
+      
+    }
+  }
+};

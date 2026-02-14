@@ -1,0 +1,10 @@
+(1) 307x 91y
+(2) 220x 238y
+(3) 280x 363y
+(coins) 180x 437y
+
+
+Fold All:
+
+Windows and Linux: Ctrl + K Ctrl + 0
+Those are Zeros. and the one in the number row, not the numpad.

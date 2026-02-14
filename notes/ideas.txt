@@ -1,0 +1,1 @@
+maybe make different variations of the coin and do a rannum to pick one before each spawn. 

@@ -1,0 +1,1500 @@
+returnSizeAsNum(){
+    let numLength = 0;
+    let NumAsString = "";
+    for (let i = 0; !isNaN(parseInt(this.fontName[i])); i++) {
+      NumAsString += this.fontName[i];
+      numLength++;
+    }
+    return parseInt(NumAsString);
+  }
+
+
+///testing stuff
+
+    console.log("Orgional: " + makerStyle.fontName);
+    makerStyle.updateSize(50);
+    console.log("Size Changed: " + makerStyle.fontName);
+    makerStyle.revertSize();
+    console.log("Size reverted: " + makerStyle.fontName);
+
+    if (!isNaN(parseInt(makerStyle.fontName[3]))) {
+       console.log(parseInt(makerStyle.fontName[3]));
+    }
+   
+
+
+if (myImage.complete && myImage.naturalWidth !== 0) {
+  // Image is loaded and ready to render
+  ctx.drawImage(myImage, x, y);
+} else {
+  // Image not ready yet
+  console.log("Image not loaded yet.");
+}
+
+
+///Enemy object
+/* var obama = {
+    x: 250,
+    y: 400,
+    width: 50,
+    height: 50,
+    speed: 15,
+    color: "red",
+    targetIndex: 0, 
+
+  //Need a edge case for when distance of cord is equal or less than speed
+
+    moveTowardsCoin: function(){
+      //By using the switch cases he can move both y and x at same time!!!!!!! mindBlown.jpeg
+      switch (true) {
+        case this.x < coins.array[this.targetIndex]['x']:
+          this.x += 20;
+          break;
+        case this.x > coins.array[this.targetIndex]['x']:
+          this.x -= 20;
+          break;
+        //the speed edge case
+        case this.speed < coins.array[this.targetIndex]['x'] - this.x:
+          this.speed = 1;
+          break;
+        default:
+          break;
+      }
+
+      switch (true) {
+        case this.y < coins.array[this.targetIndex]['y']:
+           this.y += 20;
+          break;
+         case this.y > coins.array[this.targetIndex]['y']:
+           this.x -= 20;
+        //the speed edge case
+        case this.speed < coins.array[this.targetIndex]['y'] - this.y:
+          this.speed = 1;
+        default:
+          break;
+      }
+
+      if(this.y < coins.array[this.targetIndex]['y']){
+        this.y += 20;
+        return;
+      }
+      if(this.y > coins.array[this.targetIndex]['y']){
+        this.y -= 20;
+        return;
+      }
+
+
+    },
+
+    targetNewRanCoin: function(){
+      this.targetIndex = ranNum(0, coins.arrayLength - 1);
+      this.speed = 15;
+    },
+
+}
+
+
+function insertText(originalString, textToInsert, index) {
+     if (index < 0 || index > originalString.length) {
+         return originalString; // Handle invalid index
+     }
+     return originalString.slice(0, index) + textToInsert + originalString.slice(index);
+   }
+
+
+updateObjLoc(isImage, isGif) {
+    if (!isImage && !isGif) {
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    ctx.fillRect(this.lastPosX, this.lastPosY, this.width, this.height);
+  }
+  if(isImage){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    image.src = this.imgSrc;
+    ctx.drawImage(image.src, this.x, this.y);
+  }
+  if(this.currentFrame > this.frames - 1 ){
+    this.currentFrame = 0;
+  }
+  if(isGif){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    this.currentFrame++;
+    this.imgSrc = "imgs/obamaFrames/obama-" + this.currentFrame.toString() + ".png";
+    this.img.src = this.imgSrc;
+    console.log(this.imgSrc);
+    ctx.drawImage(this.img, this.x, this.y);
+  }
+}
+
+
+
+
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+
+var myimage = new Image(50,50);
+myimage.src = "obama-109.png";
+myimage.onload = function() {
+  ctx.drawImage(myimage, 0, 0, 50 , 50); // Draw at (50, 50) with width and height of 50
+};
+
+
+
+
+
+      //ctx.fillStyle = this.array[i]['color'];
+      /* ctx.fillRect(
+        this.array[i]['x'],
+        this.array[i]['y'],
+        this.array[i]['width'],
+        this.array[i]['height'],
+        updateObjLoc(isImage, isGif) {
+    if (!isImage && !isGif) {
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    ctx.fillRect(this.lastPosX, this.lastPosY, this.width, this.height);
+  }
+  if(isImage){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    image.src = this.imgSrc;
+    ctx.drawImage(image.src, this.x, this.y);
+  }
+  if(this.currentFrame > this.frames - 1 ){
+    this.currentFrame = 0;
+  }
+  if(isGif){
+    ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+    ctx.fillStyle = this.color;
+    this.lastPosX = this.x;
+    this.lastPosY = this.y;
+    this.currentFrame++;
+    this.imgSrc = "imgs/obamaFrames/obama-" + this.currentFrame.toString() + ".png";
+    this.img.src = this.imgSrc;
+    console.log(this.imgSrc);
+    ctx.drawImage(this.img, this.x, this.y);
+  }
+}
+      ); */
+ /*      ctx.drawImage(coinImg, this.array[i]['x'], this.array[i]['y'])
+      this.patchCount ++;
+    
+   */
+  
+/*   addCoins (amt) {
+    let temp = 0;
+    
+    for (let i = this.arrayLength; i < this.arrayLength + amt; i++) {
+      /// add new coins with index and this if if if else format.
+      
+        this.array[i] = {
+          index: 1,
+          color: "gold",
+          x: ranNum(0, canvas.width),
+          y: ranNum(0, canvas.height),
+          width: 35,
+          height: 35,
+        };
+      
+      temp++;
+    }
+    this.arrayLength += temp;
+
+  }
+
+
+
+
+  patch (num) {
+    if (this.arrayLength < num) {
+        this.addCoins(1);
+        this.arrayLength++;
+    }
+    if (this.arrayLength > num) {
+      this.removeCoin([0]);
+      this.arrayLength--;
+      
+    }
+  }
+
+  
+
+
+
+   */
+
+
+       this.array[i] = {
+        type: this.typeBP,
+        render: this.renderBP,
+        frames: this.framesBP,
+        imgSrc: this.imgSrcBP,
+        color: this.colorBP,
+        x: this.xBP,
+        y: this.yBP,
+        lastPosX: this.xBP,
+        lastPosY: this.yBP,
+        width: this.widthBP,
+        height: this.heightBP,
+        hasGravity: this.hasGravityBP,
+        gravityAffected: this.gravityAffectedBP,
+        dragable: this.dragableBP,
+      }; 
+      
+    this.arra
+
+
+
+
+
+
+    var coins = {
+  arrayLength: 0,
+  array: {},
+  patchCount: 0,
+
+
+  createCoins: function (amt) {
+    let temp = 0;
+
+    for (let i = this.arrayLength; i <   (this.arrayLength) + amt; i++) {
+      this.array[i] = {
+        index: 1,
+        color: "gold",
+        x: ranNum(0, canvas.width),
+        y: ranNum(0, canvas.height),
+        width: 35,
+        height: 35,
+      };   
+      temp ++;
+      
+    }
+    this.arrayLength += temp;
+
+  },
+
+  renderCoins: function () {
+    this.patchCount = 0;
+    for (let i = 0; i < this.arrayLength; i++) {
+      //ctx.fillStyle = this.array[i]['color'];
+      /* ctx.fillRect(
+        this.array[i]['x'],
+        this.array[i]['y'],
+        this.array[i]['width'],
+        this.array[i]['height'],
+        
+      ); */
+      ctx.drawImage(coinImg, this.array[i]['x'], this.array[i]['y'])
+      this.patchCount ++;
+    }
+  
+  },
+
+  addCoins: function (amt) {
+    let temp = 0;
+    
+    for (let i = this.arrayLength; i < this.arrayLength + amt; i++) {
+      /// add new coins with index and this if if if else format.
+      
+        this.array[i] = {
+          index: 1,
+          color: "gold",
+          x: ranNum(0, canvas.width),
+          y: ranNum(0, canvas.height),
+          width: 35,
+          height: 35,
+        };
+      
+      temp++;
+    }
+    this.arrayLength += temp;
+
+  },
+
+
+  //copys data of last object in array to index then deletes last object.
+  removeCoin: function (index, decay){
+    if(index[0]){
+      //render the coin one last time to change its color.
+      if(decay){
+      this.array[index[1]]['color'] = 'darkgoldenrod';
+            ctx.fillStyle = this.array[index[1]]['color'];
+      ctx.fillRect(
+        this.array[index[1]]['x'],
+        this.array[index[1]]['y'],
+        this.array[index[1]]['width'],
+        this.array[index[1]]['height'],
+      )
+    }
+    else{clearobj(this.array[index[1]])}
+
+      this.array[index[1]]['color'] = this.array[this.arrayLength - 1]['color'];
+      this.array[index[1]]['x'] = this.array[this.arrayLength - 1]['x'];
+      this.array[index[1]]['y'] = this.array[this.arrayLength - 1]['y'];
+      this.array[index[1]]['width'] = this.array[this.arrayLength - 1]['width'];
+      this.array[index[1]]['height'] = this.array[this.arrayLength - 1]['height'];
+      delete this.array[this.arrayLength - 1];
+      this.arrayLength --;
+      return true;
+  }
+    else {return}
+  }, 
+
+
+  patch: function (num) {
+    if (this.arrayLength < num) {
+        this.addCoins(1);
+        this.arrayLength++;
+    }
+    if (this.arrayLength > num) {
+      this.removeCoin([0]);
+      this.arrayLength--;
+      
+    }
+  }
+};
+
+
+
+
+
+
+/// Use index to id different types of coins.
+///DO NOT TOUCH VALUES ARE FINE TUNED
+/* var crate = {
+  img: new Image(),
+  x: 200,
+  y: 250,
+  width: 35,
+  height: 35, 
+  gravityAffected: true,
+}
+crate.img.src = "imgs/crate.png";
+
+
+
+this.speed = speed;
+    this.color = color;
+    this.lastPosX = 0;
+    this.lastPosY = 0;
+    this.targetIndex = 0;
+    this.img = new Image();
+    this.imgSrc = " ";
+    this.frames = 0;
+    this.currentFrame = 0;
+
+
+  */ 
+
+Is placed before all the checks of if gif or img or pix. 
+      renderObjects() {
+      for (let i = 0; i < this.arrayLength; i++) {
+          //OutOfBounce Check and fix
+          if(this.array[i]['y'] + this.array[i]['height'] > canvasBottomYAxis){
+            this.array[i]['y'] = canvasBottomYAxis - this.array[i]['height'] 
+          }
+          if (this.array[i]['y'] < 0) {
+              this.array[i]['y'] = 0;
+          }
+          if (this.array[i]['x'] < 0) {
+              this.array[i]['x'] = 0;
+          }
+          if (this.array[i]['x'] + this.array[i]['width'] > canvas.width) {
+            this.array[i]['x'] = canvas.width - this.array[i]['width'];
+          }
+
+
+
+///Will move an object based on the keypress and its speed, assuming speed propertie. 
+function move(toMove) {
+  if (keyPress.w == true) {
+    toMove.y -= toMove.speed;
+  }
+  if (keyPress.a == true) {
+    toMove.x -= toMove.speed;
+  }
+  if (keyPress.s == true) {
+    toMove.y += toMove.speed;
+  }
+  if (keyPress.d == true) {
+    toMove.x += toMove.speed;
+  }
+}
+
+
+Added as a method for the object list class and npc class. 
+///Render a image.
+function renderImg (obj) {
+  ctx.drawImage(obj.img, obj.x, obj.y);
+}
+
+
+
+//// Object Render functions \\\\ 
+function renderObj(obj) {
+  ctx.clearRect(lastPos.x, lastPos.y, lastPos.width, lastPos.height);
+  ctx.fillStyle =  obj.color;
+  lastPos.x = obj.x;
+  lastPos.y = obj.y;
+  lastPos.width = obj.width;
+  lastPos.height = obj.height;
+  ctx.fillRect(lastPos.x, lastPos.y, lastPos.width, lastPos.height);
+}
+
+///Renders a obj.
+function renderObj (obj) {
+    ctx.fillStyle =  obj.color;
+    ctx.fillRect(obj.x, obj.y, obj.width, obj.height);
+}
+
+
+    if (!outOfBouncelock) {
+      if (keyPress.w == true) {
+        this.velocityY -= this.speed * deltaTime.time;
+      }
+      if (keyPress.a == true) {
+        this.velocityX -= this.speed * deltaTime.time;
+      }
+      if (keyPress.s == true) {
+        this.velocityY += this.speed * deltaTime.time;
+      }
+      if (keyPress.d == true) {
+        this.velocityX += this.speed * deltaTime.time;
+      }
+
+      ///Normalizes diagnonal movement, so its not faster. 
+      if (this.velocityX !== 0 && this.velocityY !== 0) {
+       this.velocityX * 0.6
+       this.velocityY * 0.6;
+      }
+
+    }
+
+    ///Applies the velocity to the position. 
+    this.x += this.velocityX;
+    this.y += this.velocityY;
+
+    ///Resets velocity
+    this.velocityX = 0;
+    this.velocityY = 0;
+  }
+
+
+
+object.array[this.targetIndex]["x"]:
+
+
+
+    else {
+    
+    ///Diagonal movement
+    let lock = false;
+    if (object.x < this.x && object.y < this.y && !lock) {
+      this.velocityY -= this.speed * deltaTime.time;
+      this.velocityX -= this.speed * deltaTime.time;
+      lock = true;
+    }
+    if (object.x > this.x && object.y < this.y && !lock) {
+      this.velocityY -= this.speed * deltaTime.time;
+      this.velocityX += this.speed * deltaTime.time;
+      lock = true;
+    }
+    if (object.x > this.x && object.y > this.y && !lock) {
+      this.velocityY += this.speed * deltaTime.time;
+      this.velocityX += this.speed * deltaTime.time;
+      lock = true;
+    }
+    if (object.x < this.x && object.y > this.y && !lock) {
+      this.velocityY += this.speed * deltaTime.time;
+      this.velocityX -= this.speed * deltaTime.time;
+      lock = true;
+    }
+    ///Stright movement
+    if (object.y < this.y && !lock) {
+      this.velocityY -= this.speed * deltaTime.time;
+    }
+    if (object.x > this.x && !lock) {
+      this.velocityX += this.speed * deltaTime.time;
+    }
+    if (object.y > this.y && !lock) {
+      this.velocityY += this.speed * deltaTime.time;
+    }
+    if (object.x < this.x && !lock) {
+      this.velocityX -= this.speed * deltaTime.time;
+    }
+
+    ///Normalizes diagonal movement. 
+    if (this.velocityX !== 0 && this.velocityY !== 0) {
+       this.velocityX * 0.6;
+       this.velocityY * 0.6;
+      }
+
+
+
+    ///Applies the velocity to the position 
+    this.x += this.velocityX;
+    this.y += this.velocityY;
+
+
+    ///Resets velocity
+    this.velocityX = 0;
+    this.velocityY = 0;
+
+  }
+
+   if (isImage) {
+      ctx.clearRect(this.lastPosX, this.lastPosY, this.width, this.height);
+      ctx.fillStyle = this.color;
+      this.lastPosX = this.x;
+      this.lastPosY = this.y;
+      image.src = this.imgSrc;
+      ctx.drawImage(image.src, this.x, this.y);
+    }
+          //image
+      this.imageHolder = new Image(this.widthBP, this.heightBP);
+      this.imgSrcBP = " ";
+      this.framesBP = 0;
+      this.currentFrame = 0;
+
+
+function digSplit(num) {
+    var list = [];
+    for (let i = 0; num >= 1; i++ ){
+        list.push(num % 10);
+        num = Math.floor((num / 10));  
+    }
+    return list.reverse();
+}
+
+
+const options = [
+  {
+    priceX: 307 + this.showMenuX,
+    priceY: 91 + this.showMenuY
+  },
+  {
+    priceX: 220 + this.showMenuX,
+    priceY: 238 + this.showMenuY
+  },
+  {
+    priceX: 280 + this.showMenuX,
+    priceY: 363 + this.showMenuY
+  }
+];
+
+
+
+
+
+
+  document.fonts.load("40px 'Permanent Marker'").then(() => {
+    ctx.font = "40px 'Permanent Marker'";
+    ctx.fillStyle = "#fcf259";
+    ctx.fillText("Hello from Roboto!", 50, 100);
+    ctx.strokeStyle = '#c5172e';
+    ctx.lineWidth = 3;
+ctx.strokeText('124634890', 200, 200);
+ctx.fillText('124634890', 200, 200);
+  });
+
+  ctx.shadowColor = "rgba(0,0,0,0.5)";
+ctx.shadowOffsetX = 4;
+ctx.shadowOffsetY = 4;
+ctx.shadowBlur = 5;
+
+
+
+class objCords {
+  constructor(x,y,showX,showY) {
+    this.x = x;
+    this.y = y;
+    this.showX = showX;
+    this.showY = showY;
+  }
+  render (){
+
+  }
+  update (){
+    
+  }
+}
+
+
+
+///Displays the coordinates of an object. Assuming it has an x and y propertie.
+function renderObjCords(obj, showX, showY) {
+  ctxLayer1.clearRect(showX, showY - 50, 335, 50);
+  ctxLayer1.fillText("X", showX, showY);
+  ctxLayer1.fillText(Math.floor(obj.x), showX + 70, showY);
+  ctxLayer1.fillText("Y", showX + 180, showY);
+  ctxLayer1.fillText(Math.floor(obj.y), showX + 235, showY);
+}
+
+class TEXT { //Used so last positons can be saved, and used with the
+                //with the textHandler.
+  constructor(text){
+    this.text = text.toString();
+    this.lastPosX = 0;
+    this.lastPosY = 0;
+  }
+}
+
+
+///Used both TEXT and TEXTSTYLE, takes the cords and the canvas to print on.
+///Send the shorthand to the canvas aka the draw context one. 
+ function TextHandler(textObj,styleObj,x,y,canvas){
+  document.fonts.load(styleObj.fontName).then(() => {
+  
+    ///First time text object is used by the handler. 
+    if (textObj.lastPosX == 0 && textObj.lastPosY == 0) {
+    lastPosXText = x;
+    lastPosYText = y;
+
+  }
+
+  ///This gets the width of the text.
+  let textWidth = canvas.measureText(textObj.text).width;
+
+  
+///Super fine tuned. This will clear the last pos of the text.
+canvas.clearRect(
+  Math.floor(textObj.lastPosX - styleObj.fontSize * 0.2),
+  Math.floor(textObj.lastPosY - styleObj.fontSize * 0.9),
+  Math.floor(textWidth + styleObj.fontSize * 0.4),
+  Math.floor(styleObj.fontSize * 1.1)
+);
+
+///Updates last position 
+textObj.lastPosX = x;
+textObj.lastPosY = y;
+
+
+  ///Applying styles
+  canvas.font = styleObj.fontName;
+  canvas.fillStyle = styleObj.color;
+  if (styleObj.hasBoarder) {
+    canvas.strokeStyle = styleObj.borderColor;
+    canvas.lineWidth = styleObj.borderWidth;
+  }
+  if (styleObj.hasShadow) {
+    canvas.shadowColor = styleObj.shadowColor;
+    canvas.shadowOffsetX = styleObj.shadowOffsetX;
+    canvas.shadowOffsetY = styleObj.shadowOffsetY;
+    canvas.shadowBlur = styleObj.shadowSize;
+  }
+  else {
+    canvas.shadowOffsetX = 0;
+    canvas.shadowOffsetY = 0;
+    canvas.shadowBlur = 0;
+  }
+
+  //Renders
+  if(styleObj.hasBoarder){canvas.strokeText(textObj.text,x,y);}
+  canvas.fillText(textObj.text,x,y);
+  
+}
+
+
+);
+} 
+
+
+let str = "Hello, world!";
+let newStr = str.slice(0, 7) + str.slice(8); // Removes character at index 7 (the "w")
+console.log(newStr); // "Hello, orld!"
+
+
+
+methods to add. 
+return size, 
+revert size, 
+
+
+Great question — this line is tripping you up because of a quirk in JavaScript:
+
+javascript
+Copy
+Edit
+if (parseInt(makerStyle.fontName[3]) != NaN)
+❗ The Problem:
+You're using != NaN to check if the result is not NaN, but this always returns true, because:
+
+NaN != NaN is true — but so is 5 != NaN, because:
+
+NaN is not equal to anything, not even itself.
+
+✅ The Correct Way: Use isNaN()
+javascript
+Copy
+Edit
+const value = parseInt(makerStyle.fontName[3]);
+
+if (!isNaN(value)) {
+    console.log(value); // Only logs if value is a valid number
+}
+🧠 Summary
+Wrong	Why it fails
+x != NaN or x == NaN	Always false, unreliable
+
+Right	What it does
+!isNaN(x)	True only if x is a number
+Number.isNaN(x)	Safer strict check for NaN
+
+
+ //No idea why -50 is used, but it works.
+  renderMenu: function () {
+    ctxLayer1.font = this.menuFontSize.toString() + "px serif";
+/*     ctxLayer1.clearRect(
+      this.mainMenuCallX,
+      this.mainMenuCallY - 50,
+      this.menuWidth,
+      this.menuHeight
+    );
+ */
+    ctxLayer1.fillRect(
+      this.mainMenuCallX - this.borderRadiusPX,
+      this.mainMenuCallY - 50 - this.borderRadiusPX,
+      this.menuWidth + this.borderRadiusPX,
+      this.menuHeight + this.borderRadiusPX
+    );
+    ctxLayer1.fillRect(
+      this.mainMenuCallX,
+      this.mainMenuCallY - 50,
+      this.menuWidth - this.borderRadiusPX,
+      this.menuHeight - this.borderRadiusPX
+    );
+    ctxLayer1.fillText(
+      "( 1 ) Speed Increase $50",
+      this.mainMenuCallX + 1,
+      this.mainMenuCallY
+    );
+    this.increment++;
+    ctxLayer1.fillText(
+      "( 2 ) Size Increase $50",
+      this.mainMenuCallX + 1,
+      this.mainMenuCallY + this.menuFontSize
+    );
+    this.increment++;
+    ctxLayer1.fillText(
+      "( 3 ) Point Increase $50",
+      this.mainMenuCallX + 1,
+      this.mainMenuCallY + this.menuFontSize * 2
+    );
+    this.increment++;
+    ctxLayer1.fillText(
+      "( 4 ) Trump Bot $50",
+      this.mainMenuCallX + 1,
+      this.mainMenuCallY + this.menuFontSize * 3
+    );
+    this.increment++;
+    ctxLayer1.fillText(
+      "( 5 ) Exit Shop",
+      this.mainMenuCallX + 1,
+      this.mainMenuCallY + this.menuFontSize * 4
+    );
+    this.increment++;
+    ctxLayer1.fillText(
+      "Current big ones $" + score.cash,
+      this.mainMenuCallX + 1,
+      this.mainMenuCallY + this.menuFontSize * 5
+    );
+    this.increment++;
+  },
+
+
+
+      console.log("Orgional: " + makerStyle.fontName);
+    makerStyle.updateSize(50);
+    console.log("Size Changed: " + makerStyle.fontName);
+    makerStyle.revertSize();
+    console.log("Size reverted: " + makerStyle.fontName);
+
+    if (!isNaN(parseInt(makerStyle.fontName[3]))) {
+       console.log(parseInt(makerStyle.fontName[3]));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     class OBJECTLIST {
+    constructor(x, y, width, height,backUpImage) {
+      ///Used by other functions to determine if a loop is needed. 
+      this.isList = true;
+
+      //Array stuff
+      this.arrayLength = 0;
+      this.array = {};
+      this.patchCount = 0;
+
+      //Global properties. These properties are shared by all objects in the list.
+      this.isSolid = false;
+
+
+      //Render:  1 = pixels  2 = image  3 = gif
+      //blueprint. Every object will store these properties.
+      this.typeBP = 1;
+      this.renderBP = 1;
+      this.xBP = x;
+      this.yBP = y;
+      this.widthBP = width;
+      this.heightBP = height;
+      this.speedBP = 0;
+      this.colorBP = " ";
+      this.hasGravityBP = false;
+      this.isGravityAffectedBP = false;
+      this.dragableBP = false;
+
+
+          objToTestAgainst.array[1]['x']
+
+
+
+          //[0] bool [1] coin index if param true
+function collisionDetection(obj1, obj2, obj2iIsList) {
+  if (obj2iIsList == true) {
+    for (let i = 0; i < obj2.arrayLength; i++) {
+      if (
+        obj1.x + obj1.width - obj2.array[i].x >= 0 &&
+        obj2.array[i].x + obj2.array[i].width - obj1.x >= 0 &&
+        obj1.y + obj1.height - obj2.array[i].y >= 0 &&
+        obj2.array[i].y + obj2.array[i].height - obj1.y >= 0
+      ) {
+        return [true, i];
+      }
+    }
+
+      case "top":
+    for (let i = 0; i < length; i++) {
+      ctxLayer1.fillRect(obj.x,obj.y - i,obj.width,obj.y);
+    }
+    break;
+  case "right":
+    for (let i = 0; i < length; i++) {
+      ctxLayer1.fillRect(obj.x,obj.y,obj.x+i,obj.height);
+    }
+    break;
+  case "bottom":
+    for (let i = 0; i < length; i++) {
+      ctxLayer1.fillRect(obj.x,obj.y,obj.width,obj.height + i);
+    }
+
+
+
+    ctxLayer1.fillStyle = "green";
+    var colDec = collisionDetection(rayObj,coins5,true);
+    rayObj.x = obj.x;
+    rayObj.y = obj.y;
+    rayObj.height = 0;
+    rayObj.width = obj.width;
+    console.log(colDec);
+
+    for (let i = 0; i < length; i++) {
+      colDec = collisionDetection(rayObj,coins5,true);
+      if(colDec[0]){
+        if (coins5.array[colDec[1]]['y'] < rayObj.y) {
+          console.log("bottom");
+          break;
+        }
+        if (coins5.array[colDec[1]]['y'] > rayObj.y) {
+          console.log("top");
+          break;
+        }
+      }
+      rayObj.y -= 1;
+      rayObj.height +=1;
+      //console.log(i);
+      ctxLayer1.fillRect(rayObj.x,rayObj.y,rayObj.width,rayObj.height);
+    }
+    console.log(rayObj);
+    break;
+    
+    
+    
+    
+function rayCaster (obj,side,length) {
+  let colorHolder = ctxLayer1.fillStyle;
+  var colDec = [];
+switch (side) {
+  case "left":
+    ctxLayer1.fillStyle = "red";
+    rayObj.x = obj.x;
+    rayObj.y = obj.y;
+    rayObj.height = obj.height;
+    rayObj.width = 0;
+    colDec = collisionDetection(rayObj,coins5,true);
+
+    for (let i = 0; i < length; i++) {
+      colDec = collisionDetection(rayObj,coins5,true);
+      if(colDec[0]){
+        console.log("left");
+        return "left", colDec[1];
+      }
+      rayObj.width += 1;
+      rayObj.x -= 1;
+      ctxLayer1.fillRect(rayObj.x,rayObj.y,rayObj.width,rayObj.height);
+    }
+    break;
+  case "top": 
+  ctxLayer1.fillStyle = "green";
+    rayObj.x = obj.x;
+    rayObj.y = obj.y;
+    rayObj.height = 0;
+    rayObj.width = obj.width;
+    colDec = collisionDetection(rayObj,coins5,true);
+
+    for (let i = 0; i < length; i++) {
+      colDec = collisionDetection(rayObj,coins5,true);
+      if(colDec[0]){
+        if (coins5.array[colDec[1]]['y'] < rayObj.y) {
+          console.log("top");
+          return "top", colDec[1];
+        }
+        if (coins5.array[colDec[1]]['y'] > rayObj.y) {
+          console.log("bottom");
+          return "bottom", colDec[1];
+        }
+      }
+      rayObj.y -= 1;
+      rayObj.height +=1;
+      ctxLayer1.fillRect(rayObj.x,rayObj.y,rayObj.width,rayObj.height);
+    }
+    break;
+  case "right":
+    ctxLayer1.fillStyle = "blue";
+    rayObj.x = obj.x + obj.width;
+    rayObj.y = obj.y;
+    rayObj.height = obj.height;
+    rayObj.width = 0;
+    colDec = collisionDetection(rayObj,coins5,true);
+    for (let i = 0; i < length; i++) {
+     colDec = collisionDetection(rayObj,coins5,true);
+      if(colDec[0]){
+        console.log("right");
+        return "right", colDec[1];
+      }
+     // rayObj.x += 1;
+      rayObj.width +=1;
+      //console.log(i);
+      ctxLayer1.fillRect(rayObj.x,rayObj.y,rayObj.width,rayObj.height);
+    }
+    break;
+  case "bottom":
+    ctxLayer1.fillStyle = "orange";
+    rayObj.x = obj.x;
+    rayObj.y = obj.y + obj.height;
+    rayObj.height = 0;
+    rayObj.width = obj.width;
+    colDec = collisionDetection(rayObj,coins5,true);
+   // console.log(colDec);
+    for (let i = 0; i < length; i++) {
+      colDec = collisionDetection(rayObj,coins5,true);
+      if(colDec[0]){
+
+          console.log("botom");
+          return "bottom", colDec[1];
+        
+      }
+      rayObj.height += 1;
+      ctxLayer1.fillRect(rayObj.x,rayObj.y,rayObj.width,rayObj.height);
+    }
+    break;
+  default:
+    break;
+}
+ctxLayer1.fillStyle = colorHolder; 
+}
+
+
+ function push(objToTest, objToTestAgainst, objToTestAgainstIsList){
+  colDec = collisionDetection(objToTest, objToTestAgainst, objToTestAgainstIsList);
+
+  if (colDec[0]) {
+    if (objToTestAgainstIsList) {
+    var targetX = objToTestAgainst.array[colDec[1]]['x'];
+    var targetWidth = objToTestAgainst.array[colDec[1]]['width'];
+    var targetY = objToTestAgainst.array[colDec[1]]['y']; 
+    var targetHeight = objToTestAgainst.array[colDec[1]]['height']; 
+    }
+    else {
+    var targetX = objToTestAgainst.x;
+    var targetY = objToTestAgainst.y;
+    }
+    ///( (( && (!objToTest.x > targetX )) ) && (!objToTest.y > targetY))
+    ///Left
+    if ((objToTest.x + objToTest.width) >= targetX && objToTest.y + objToTest.width > targetY) {
+     // console.log("left");
+    }
+    ///Top
+    if (((objToTest.y + objToTest.height) >= targetY) && (!objToTest.y > targetY)) {
+      console.log("top");
+    }
+    ///Right
+    if (false) {
+      console.log("right");
+    }
+    ///Bottom
+    if (false) {
+      console.log("bottom");
+    }
+
+  }
+  else {
+  }
+}
+
+
+
+
+
+
+
+
+      ///Stops the NPC from bouncing around when it gets close to the target.
+  /*     if (collisionDetection(this,object,true)) {
+        console.log("step 1.2");
+        this.x = object.array[this.targetIndex]['x'];
+       this.y = object.array[this.targetIndex]['y'];
+  
+     } */
+
+
+
+
+
+  else {
+
+
+    ///Stops the NPC from bouncing around when it gets close to the target.
+      if (collisionDetection(this,object,false)) {
+        this.x = object.x;
+        this.y = object.y;
+      }
+    ///Diagonal movement
+    let lock = false;
+    if (object.x < this.x && object.y < this.y && !lock) {
+      this.velocityY -= this.speed * deltaTime.time;
+      this.velocityX -= this.speed * deltaTime.time;
+      lock = true;
+    }
+    if (object.x > this.x && object.y < this.y && !lock) {
+      this.velocityY -= this.speed * deltaTime.time;
+      this.velocityX += this.speed * deltaTime.time;
+      lock = true;
+    }
+    if (object.x > this.x && object.y > this.y && !lock) {
+      this.velocityY += this.speed * deltaTime.time;
+      this.velocityX += this.speed * deltaTime.time;
+      lock = true;
+    }
+    if (object.x < this.x && object.y > this.y && !lock) {
+      this.velocityY += this.speed * deltaTime.time;
+      this.velocityX -= this.speed * deltaTime.time;
+      lock = true;
+    }
+    ///Stright movement
+    if (object.y < this.y && !lock) {
+      this.velocityY -= this.speed * deltaTime.time;
+    }
+    if (object.x > this.x && !lock) {
+      this.velocityX += this.speed * deltaTime.time;
+    }
+    if (object.y > this.y && !lock) {
+      this.velocityY += this.speed * deltaTime.time;
+    }
+    if (object.x < this.x && !lock) {
+      this.velocityX -= this.speed * deltaTime.time;
+    }
+
+    ///Normalizes diagonal movement. 
+    if (this.velocityX !== 0 && this.velocityY !== 0) {
+       this.velocityX * 0.6;
+       this.velocityY * 0.6;
+      }
+
+
+
+    ///Applies the velocity to the position 
+    this.x += this.velocityX;
+    this.y += this.velocityY;
+
+
+    ///Resets velocity
+    this.velocityX = 0;
+    this.velocityY = 0;
+
+  }
+}
+
+
+
+      ///Stops the NPC from bouncing around when it gets close to the target.
+      ///Way better than last solution. 
+      if (Math.abs(object.array[this.targetIndex]['x'] - this.x) < 5 ) {
+        this.x = object.array[this.targetIndex]['x'];
+      }
+      if (Math.abs(object.array[this.targetIndex]['y'] - this.y) < 5 ) {
+        this.y = object.array[this.targetIndex]['y'];
+      }
+
+
+
+
+
+      function collisionDetection(obj1, obj2, obj2IsList) {
+  if (obj2IsList == true) {
+    for (let i = 0; i < obj2.arrayLength; i++) {
+      if (
+        obj1.x + obj1.width - obj2.array[i].x >= 0 &&
+        obj2.array[i].x + obj2.array[i].width - obj1.x >= 0 &&
+        obj1.y + obj1.height - obj2.array[i].y >= 0 &&
+        obj2.array[i].y + obj2.array[i].height - obj1.y >= 0
+      ) {
+        return [true, i];
+      }
+    }
+    return [false];
+  } else {
+    if (
+      obj1.x + obj1.width - obj2.x >= 0 &&
+      obj2.x + obj2.width - obj1.x >= 0 &&
+      obj1.y + obj1.height - obj2.y >= 0 &&
+      obj2.y + obj2.height - obj1.y >= 0
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+
+
+
+
+const items = [
+  {
+    id: 1,
+    name: "Item One",
+    description: "This is the first item.",
+    price: 9.99,
+    inStock: true
+  },
+  {
+    id: 2,
+    name: "Item Two",
+    description: "This is the second item.",
+    price: 14.99,
+    inStock: false
+  },
+  {
+    id: 3,
+    name: "Item Three",
+    description: "This is the third item.",
+    price: 19.99,
+    inStock: true
+  }
+];
+
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" }
+];
+
+const nameToFind = "Bob";
+
+// Extract just the names
+const names = users.map(user => user.name);
+
+// Use includes to check
+const exists = names.includes(nameToFind);
+
+
+
+
+
+
+
+
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" }
+];
+
+const idToRemove = 2;
+
+const updatedUsers = users.filter(user => user.id !== idToRemove);
+
+console.log(updatedUsers);
+// Output:
+// [
+//   { id: 1, name: "Alice" },
+//   { id: 3, name: "Charlie" }
+// ]
+
+
+
+
+
+
+
+
+
+var collisionDectectionNew = {
+
+collisions: [
+],
+
+runOnObjectForObject: function (obj1,obj2,obj2IsList) {
+  if (obj2IsList == true) {
+    for (let i = 0; i < obj2.arrayLength; i++) {
+      if (
+        obj1.x + obj1.width - obj2.array[i].x >= 0 &&
+        obj2.array[i].x + obj2.array[i].width - obj1.x >= 0 &&
+        obj1.y + obj1.height - obj2.array[i].y >= 0 &&
+        obj2.array[i].y + obj2.array[i].height - obj1.y >= 0
+      ) {
+        let hitIndexsPull = this.collisions.map(collisions => collisions.objectHitIndex);
+        if (!hitIndexsPull.includes(i)) {
+          this.collisions[this.collisions.length] = {
+          objectTestedAndIndex: obj1, 
+          objectHitIsList: true,
+          ojectHit: obj2,
+          objectHitIndex: i,
+        }
+        return [true, i];
+        }
+
+      }
+      else {
+        this.collisions = this.collisions.filter(collisions => collisions.objectHitIndex !== i);
+      }
+    }
+    
+
+    return [false];
+  } else {
+    if (
+      obj1.x + obj1.width - obj2.x >= 0 &&
+      obj2.x + obj2.width - obj1.x >= 0 &&
+      obj1.y + obj1.height - obj2.y >= 0 &&
+      obj2.y + obj2.height - obj1.y >= 0
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+}
+
+}
+
+
+
+
+const users = [
+  { id: 1, name: "Alice", isActive: true },
+  { id: 2, name: "Bob", isActive: false },
+  { id: 3, name: "Charlie", isActive: true }
+];
+
+// Using reduce
+const activeIndexes = users.reduce((indexes, user, index) => {
+  if (user.isActive) {
+    indexes.push(index);
+  }
+  return indexes;
+}, []);
+
+console.log(activeIndexes); // [0, 2]
+
+
+
+
+const users = [
+  { id: 1, name: "Alice", isActive: false },
+  { id: 2, name: "Bob", isActive: true },
+  { id: 3, name: "Charlie", isActive: false }
+];
+
+const index = users.findIndex(user => user.isActive === true);
+
+console.log(index); // 1
+
+
+
+          let hitIndexsPull = this.collisions.map(
+            collisions => collisions.itsIndexes
+          );
+
+
+                      this.collisions[currentIndex] = {
+              objectHitIsList: true,
+              ojectHit: onObject,
+              objectHitIndex: i,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                runCollisionDectection(onObject, objectIsList) {
+    if (objectIsList == true) {
+      let currentIndex = 0;
+      let objectHitsExtraction = this.collisions.map(
+        collisions => collisions.objectHit
+      )
+      if (!objectHitsExtraction.includes(onObject)) {
+      currentIndex = this.collisions.length;
+      this.collisions[this.collisions.length] = {
+        objectHitIsList: true,
+        objectHit: onObject,
+        itsIndexes: [ ],
+      }        
+      }
+      else {
+        currentIndex = this.collisions.findIndex(collisions => collisions.objectHit === onObject);
+      }
+
+      for (let i = 0; i < onObject.arrayLength; i++) {
+        if (
+          this.x + this.width - onObject.array[i].x >= 0 &&
+          onObject.array[i].x + onObject.array[i].width - this.x >= 0 &&
+          this.y + this.height - onObject.array[i].y >= 0 &&
+          onObject.array[i].y + onObject.array[i].height - this.y >= 0
+        ) {
+          if (!this.collisions[currentIndex]['itsIndexes'].includes(i)) {
+            this.collisions[currentIndex]['itsIndexes'].push(i);
+            };
+            return [true, i];
+          }
+        } else {
+          this.collisions = this.collisions.filter(
+            (collisions) => collisions.objectHitIndex !== i
+          );
+        }
+      }
+
+      return [false];
+    } else {
+      if (
+        this.x + this.width - onObject.x >= 0 &&
+        onObject.x + onObject.width - this.x >= 0 &&
+        this.y + this.height - onObject.y >= 0 &&
+        onObject.y + onObject.height - this.y >= 0
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+}
+
+
+
+if (
+          this.x + this.width - onObject.array[i].x >= 0 &&
+          onObject.array[i].x + onObject.array[i].width - this.x >= 0 &&
+          this.y + this.height - onObject.array[i].y >= 0 &&
+          onObject.array[i].y + onObject.array[i].height - this.y >= 0
+        )
+
+
+
+
+
+
+ if (
+        this.x + this.width - onObject.x >= 0 &&
+        onObject.x + onObject.width - this.x >= 0 &&
+        this.y + this.height - onObject.y >= 0 &&
+        onObject.y + onObject.height - this.y >= 0
+      )
+
+
+variables to work with
+/// collisions array | isCollision bool \\\
+
+
+collisions = [
+  {
+    objectCollidedID = "";
+    allIndexesOfCollides = [
+
+    ]
+  }
+  {
+    objectCollidedID = "";
+    allIndexesOfCollides = [
+
+    ]
+  }
+  ...
+]
+
+
+
+
+const people = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+  { name: "Charlie", age: 40 },
+];
+
+const index = people.findIndex(person => person.name === "Bob");
+console.log(index); // 1
+
+
+
+const fruits = ["apple", "banana", "cherry"];
+const valueToRemove = "banana";
+const index = fruits.indexOf(valueToRemove);
+
+if (index !== -1) {
+  fruits.splice(index, 1);
+}
+console.log(fruits); // ["apple", "cherry"]

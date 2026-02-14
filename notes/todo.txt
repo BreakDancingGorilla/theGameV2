@@ -1,0 +1,166 @@
+ADD A COLLISON DECTOR FOR SELF OBJECTS IN THE ARRAY. 
+MAYBE ALSO ADD A OPTION TO CHECK A OBJECT LIST TO A OBJECT LIST IN THE COLLISON FUNCTION. 
+
+
+Update score object to be able to add new scores and all the math
+and placement is done automatically. Also maybe combind the score and 
+cords objects into one and just has specificed slots to display because they
+all have the same format of name: value. 
+
+
+
+
+
+Add a delta time, and tie events to that. 
+Make a inventory with items that can be picked up and spawn from 
+said events. 
+
+
+!!!!! ADD A GUN/CANNON !!!!!! 
+Make it purchable through the shop maybe, or an item pickup. Then upgrades
+can spawn around it. 
+
+
+/// Spawn enemys that will attack the player. 
+ 
+
+
+ ////We can tie a lot of events to the delta timer. 
+ ///Look up how to set up delta time. 
+
+
+
+ ///Add vololcity
+ //for the crates we can use the difference between two points
+ that it was dragged to calcualte what its vololcity should be 
+ after it is not dragged. 
+
+
+ /// When spawning objects from object list, do a check to see if, 
+ the object to be spawn collides with the object that was just spawned.
+ That way they are no spawning inside of each other. 
+
+
+
+ ////Change everything to the style of the menu. 
+
+
+ ///Add sound effect and particle effect to coins on pickup. 
+
+
+
+ /// 6/5/2025
+Added a text class, a text style class, that are used
+in a textHandler function. There are also now 2 diffent canvas, 
+with a z index. The canvas2 and ctxOverLay is the new canvas and,
+text handler function can handle either or. This was done so when text is cleared,
+it doesn't change the background. This will allow us to make easier overlays.
+Using the text and text style classes we can easily make customizable text. 
+
+
+Also for whatever reason yesterday I deleted all the styling and 
+text rendering on all the other functions. But we should be able
+to use the text handler everywhere now. :D. and turn everything
+into text objects. 
+
+
+
+////parseInt() use this to change text to a number. Will be need with the text function. 
+
+
+
+Just use clear screen instead of clear rect. 
+
+Make new coins and if a new coin is render obama will target it and you have to beat him to it. 
+
+Make a new function that returns the indexs of the numbers in a string. 
+
+
+
+change the calcualtions for movement both player and npc to make it to where they dont even bother moving if
+the target is out of bounce instead of checking after the movement is applied. 
+
+
+
+add a key bool for the menu so we can use f for both open and close. 
+
+
+collector bot changes image based on dirrection, it will be a square like obama but face will face whatever it is targeting. 
+
+make the button that starts the menu be a variable so it cant be easily changed. 
+
+make the coin spawning work again. 
+
+
+
+add colision between objects. 
+let the player move the boxes. 
+
+you can save the colDec into one variable and just use varaible[0 or 1];
+That way we don't have to call it multiple times. 
+
+
+!!!Maybe we could call it once at the start of the game loop and
+just pull from it from the rest of the gameloop. !!!
+
+
+
+
+
+
+push flow. 
+test if the obj to move cords are going to colide with box, if so set obj cords to side of the box is it facing. 
+then if move again to colide move box and obj cords set to box. 
+made flow chart
+
+
+add some toggles to the screen. Maybe html lists with css and we check those values and update our own. 
+
+
+to decide which side cast a ray from the obj to the targeting obj, do that in the first part on the flow chart. 
+
+to make multiple images use a loop over an array. 
+i.x = new
+
+
+overhaul the collison decection into a obj or a function obj combo, 
+so we can just run it one time at the start of the main game loop. 
+
+
+
+
+gravity was changed to change the toMove property in the objectlist, every object has it. We need to update the list, so that we check the to move then update the postion if 
+it doesn't hit a bunch of standards. Self colision by just using the function on all objects doesn't lag the game, surpricingly. 
+
+
+need to update the two last keypresses in player movement. using the second one as the key. 
+
+
+add the coins spawning back and obama and player interaction with them. 
+
+
+%-%-% IN-PROGRESS %-%-%
+MagaProject, make a way to where collisionDetection only has to be called one time
+and everything in the loop can just call from it. Maybe return a huge array with objects 
+and each object is the two that collided with some additional information. 
+maybe do this first after the caffine. 
+
+
+start working on what happens upon coin collection but tie it into the 
+npc class so different npcs can use it. 
+
+
+%-%-% IN-PROGRESS %-%-%
+newCollision needs to be intergrated into the object classes. 
+
+
+GoodLuck figuring out what is going on, things have been moved around.
+problem is deleting coldec that isnt happing anymore. 
+
+
+
+
+use the newly created collisionDetection in npc methods. 
+
+convert gravity and drag into objectList methods. 
+Then self collision. 

@@ -1,0 +1,17 @@
+6/23 10:55am 
+Going to combind the ray caster to the npc class and combind it with push to make it push objects,
+if the next move is in the ray. Also going to add some if because there is so much lag, 
+from the constant calculations. 
+
+6/23 12:28pm 
+Done previous log, but a weird edge thing happens and it can't push multiple objects. 
+
+6/23 12:34pm
+Added a optional render parameter to the ray function. 
+
+6/23 12:40pm
+Changed all coins5 to crates. 
+
+
+6/23 1:00pm
+trying to add the coins back, having trouble making obama move towards coins, no fix yet, am tired. 
